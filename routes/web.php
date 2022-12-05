@@ -1,18 +1,19 @@
 <?php
 
+use App\Http\Controllers\UnitController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::view('{path?}', 'welcome');
+#region Unit
+Route::get("unit/list", [UnitController::class, 'List']);
+Route::get("unit/delete/{id}", [UnitController::class, 'Delete']);
+Route::post("unit/save", [UnitController::class, 'Save']);
+#endregion
 
-Route::get('/', function () {
-    return view('welcome');
-});
+#region Product
+Route::get("product/list", [ProductController::class, 'List']);
+Route::get("product/delete/{id}", [ProductController::class, 'Delete']);
+Route::get("product/info/{id}", [ProductController::class, 'ProductInfo']);
+Route::post("product/save", [ProductController::class, 'Save']);
+#endregion
