@@ -9,6 +9,7 @@ import {
 import Home from '../pages/Home';
 import Unit from '../pages/Units/Unit';
 import Product from '../pages/Product/Product';
+import Customer from '../pages/Customer/Customer';
 const router = createBrowserRouter([
     {
         path: "/",
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
     {
         path: "/product",
         element: <Product></Product>,
+    },
+    {
+        path: "/customer",
+        element: <Customer></Customer>,
     },
 ]);
 function App() {
