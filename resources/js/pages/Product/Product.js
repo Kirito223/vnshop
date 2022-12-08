@@ -55,15 +55,15 @@ function Product(props) {
         },
         {
             name: 'Dơn vị tính',
-            selector: row => row.sanphamdonvis[0].donvitinh.TenDonVi,
+            selector: row => row.sanphamdonvis.find(s => s.Primary == true).donvitinh.TenDonVi,
         },
         {
             name: 'Giá lẻ',
-            selector: row => row.sanphamdonvis[0].GiaLe,
+            selector: row => row.sanphamdonvis.find(s => s.Primary == true).GiaLe,
         },
         {
             name: 'Giá sỉ',
-            selector: row => row.sanphamdonvis[0].GiaSi,
+            selector: row => row.sanphamdonvis.find(s => s.Primary == true).GiaSi,
         },
         {
             name: "Thao tác",

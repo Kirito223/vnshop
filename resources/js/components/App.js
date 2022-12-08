@@ -10,6 +10,7 @@ import Home from '../pages/Home';
 import Unit from '../pages/Units/Unit';
 import Product from '../pages/Product/Product';
 import Customer from '../pages/Customer/Customer';
+import Sale from '../pages/Sale/Sale';
 const router = createBrowserRouter([
     {
         path: "/",
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
     {
         path: "/customer",
         element: <Customer></Customer>,
+    },
+    {
+        path: "/sale/:type",
+        element: <Sale />
     },
 ]);
 function App() {

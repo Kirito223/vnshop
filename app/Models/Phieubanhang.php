@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $khachhangId
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string|null $MaPhieu
  * 
  * @property Khachhang $khachhang
  * @property Collection|Chitietphieubanhang[] $chitietphieubanhangs
@@ -50,7 +51,8 @@ class Phieubanhang extends Model
 		'TongTien',
 		'TongNo',
 		'No',
-		'khachhangId'
+		'khachhangId',
+		'MaPhieu'
 	];
 
 	public function khachhang()

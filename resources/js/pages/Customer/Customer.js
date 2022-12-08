@@ -27,10 +27,13 @@ function Customer(props) {
     }]
 
     function destroy(id) {
-        swal({ title: "Bạn có muốn xóa khách hàng này không", text: "Xác nhận xóa khách hàng", icon: "warning", buttons, closeOnClickOutside }).then(isConfirm => {
-            customerApi.destroy(id).then(res => {
-                toast.success(res.msg)
-            })
+        swal({ title: "Bạn có muốn xóa khách hàng này không", text: "Xác nhận xóa khách hàng", icon: "warning", buttons: true, closeOnClickOutside: true }).then(isConfirm => {
+            if (isConfirm) {
+                customerApi.destroy(id).then(res => {
+                    toast.success(res.msg)
+                    loadData();
+                })
+            }
         })
     }
     const columns = [

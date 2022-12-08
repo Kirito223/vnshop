@@ -1,0 +1,9 @@
+.listScan{
+    width: 73.5%;
+    position: absolute;
+    background-color: white;
+}
+.listScan>li:hover{
+    background-color: azure;
+    cursor: pointer;
+}

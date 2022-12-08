@@ -63,6 +63,7 @@ class Vnshopdb extends Migration
 
         Schema::create('phieubanhang', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('MaPhieu');
             $table->date('NgayLap');
             $table->tinyInteger('LoaiPhieu');
             $table->decimal('TongTien', 10, 4);

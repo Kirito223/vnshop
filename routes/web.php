@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +24,9 @@ Route::post("product/save", [ProductController::class, 'Save']);
 Route::get("customer/list", [CustomerController::class, 'List']);
 Route::get("customer/delete/{id}", [CustomerController::class, 'Delete']);
 Route::post("customer/save", [CustomerController::class, 'Save']);
+#endregion
+
+#region Invoice
+Route::post("invoice/save", [InvoiceController::class, 'Save']);
+
 #endregion

@@ -23,7 +23,7 @@ function ModalCustomer(props) {
     }
 
     function changeValue(key, value) {
-        let clone = { ...customer }
+        let clone = { ...dataPost }
         clone[key] = value
         setCustomer(clone)
     }

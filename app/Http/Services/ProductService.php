@@ -12,7 +12,7 @@ class ProductService extends BaseService
     public function List()
     {
         return Sanpham::with(['sanphamdonvis' => function ($query) {
-            $query->Where("Primary", true)->with('donvitinh');
+            $query->with('donvitinh');
         }])->get();
     }
 

@@ -33,18 +33,18 @@ function Unit(props) {
     ];
     function destroy(id) {
         swal({
-            title: "Good job!",
-            text: "You clicked the button!",
-            icon: "success",
+            title: "Bạn có muốn xóa đơn vị này không",
+            text: "Xóa đơn vị",
+            icon: "warning",
             buttons: true
         }).then(isConfirm => {
             if (isConfirm) {
                 unitApi.destroy(id).then(res => {
                     toast.success(res.msg)
+                    loadData();
                 }).catch(err => {
                     console.error(err)
                     toast.error("Đã có lỗi xảy ra vui lòng thử lại sau")
-                    loadData();
                 })
             }
         });
