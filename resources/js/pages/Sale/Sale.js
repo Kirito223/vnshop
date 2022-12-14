@@ -39,7 +39,6 @@ function Sale(props) {
                 quanity: 1,
                 total: params.type == RETAIL ? unit.GiaLe : unit.GiaSi,
                 listUnit: productSelected.sanphamdonvis,
-                nameUnit: unit.donvitinh.TenDonVi
             })
         } else {
             clone[check].quanity = clone[check].quanity + 1
@@ -65,7 +64,7 @@ function Sale(props) {
         let unitSelect = clone[check].listUnit.find(s => s.donvitinhId == unit);
         clone[check].price = params.type == RETAIL ? unitSelect.GiaLe : unitSelect.GiaSi;
         clone[check].total = clone[check].quanity * clone[check].price
-        clone[check].nameUnit = unitSelect.donvitinh.TenDonVi
+        clone[check].unit = unitSelect.donvitinh.id
         setDetail(clone)
     }
 

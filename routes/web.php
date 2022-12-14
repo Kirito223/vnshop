@@ -28,5 +28,6 @@ Route::post("customer/save", [CustomerController::class, 'Save']);
 
 #region Invoice
 Route::post("invoice/save", [InvoiceController::class, 'Save']);
-
+Route::get("invoice/list", [InvoiceController::class, "List"]);
+Route::get("invoice/delete/{id}", [InvoiceController::class, "Delete"]);
 #endregion

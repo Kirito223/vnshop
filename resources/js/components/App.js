@@ -11,6 +11,7 @@ import Unit from '../pages/Units/Unit';
 import Product from '../pages/Product/Product';
 import Customer from '../pages/Customer/Customer';
 import Sale from '../pages/Sale/Sale';
+import Invoice from '../pages/Invoice/Invoice';
 const router = createBrowserRouter([
     {
         path: "/",
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
     {
         path: "/sale/:type",
         element: <Sale />
+    },
+    {
+        path: "/invoice",
+        element: <Invoice />
     },
 ]);
 function App() {

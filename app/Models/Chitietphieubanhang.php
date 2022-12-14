@@ -31,11 +31,13 @@ class Chitietphieubanhang extends Model
 	protected $table = 'chitietphieubanhang';
 
 	protected $casts = [
-		'phieubanhangId' => 'int'
+		'phieubanhangId' => 'int',
+		'sanphamId' => 'int'
 	];
 
 	protected $fillable = [
 		'phieubanhangId',
+		'sanphamId',
 		'TenSanPham',
 		'DonVi',
 		'SoLuong',
@@ -46,5 +48,10 @@ class Chitietphieubanhang extends Model
 	public function phieubanhang()
 	{
 		return $this->belongsTo(Phieubanhang::class, 'phieubanhangId');
+	}
+
+	public function sanpham()
+	{
+		return $this->belongsTo(Sanpham::class, 'sanphamId');
 	}
 }

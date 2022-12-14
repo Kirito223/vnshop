@@ -18,6 +18,17 @@ class InvoiceController extends Controller
         if ($request->has('id') == false) {
             return response()->json($this->service->SaveInvoice($request));
         } else {
+            return response()->json($this->service->UpdateInvoice($request));
         }
+    }
+
+    public function List()
+    {
+        return $this->service->List();
+    }
+
+    public function Delete($id)
+    {
+        return $this->service->Delete($id);
     }
 }

@@ -1,8 +1,10 @@
 import moment from 'moment/moment';
 import React from 'react';
+import { useParams } from 'react-router';
 
 function PrintInvoice(props) {
     const { invoice, details } = props
+    const { type } = useParams();
     function print() {
         var content = document.getElementById("contentPrint");
         var pri = document.getElementById("ifmcontentstoprint").contentWindow;
@@ -33,7 +35,7 @@ function PrintInvoice(props) {
                                 </tr>
                                 <tr>
                                     <td style={{ textAlign: "center", fontWeight: "bold" }}>
-                                        HÓA ĐƠN BÁN HÀNG
+                                        {(type == 1 || type == 2) ? "HÓA ĐƠN BÁN HÀNG" : "BÁO GIÁ SẢN PHẦM"}
                                     </td>
                                 </tr>
                             </table>

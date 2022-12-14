@@ -19,7 +19,7 @@ function Layout(props) {
                                         <a className="nav-link active" aria-current="page" href="/">Trang chủ</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">Hóa đơn</a>
+                                        <a className="nav-link" href="/invoice">Hóa đơn</a>
                                     </li>
                                     <li className="nav-item dropdown">
                                         <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
