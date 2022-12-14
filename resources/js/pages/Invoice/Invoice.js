@@ -53,12 +53,12 @@ function Invoice(props) {
             text: 'Bạn có muốn xóa hóa đơn này không',
             title: 'Bạn có muốn xóa hóa đơn này không',
             icon: "warning",
-            buttons, closeOnClickOutside
+            buttons: true, closeOnClickOutside: true
         }).then(isConfirm => {
             if (isConfirm) {
                 invoiceApi.destroy(id).then(res => {
                     toast.success(res.msg)
-                    i
+                    loadData()
                 })
             }
         })

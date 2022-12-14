@@ -100,9 +100,9 @@ function Sale(props) {
                 if (isConfrim) {
                     $('#modal-print').modal('show')
                 }
-                reset();
             })
         })
+
     }
 
     function reset() {
@@ -162,9 +162,9 @@ function Sale(props) {
                                                     <input onChange={(e) => changeValue("price", e.target.value, item.id)} value={item.price} className="form-control" />
                                                 </td>
                                                 <td>
-                                                    <select onChange={(e) => selectedUnit(e.target.value, item.id)} className='form-control'>
+                                                    <select value={item.unit} onChange={(e) => selectedUnit(e.target.value, item.id)} className='form-control'>
                                                         {item.listUnit.map(itemUnit => {
-                                                            return <option selected={itemUnit.donvitinhId == item.unit ? true : false} value={itemUnit.donvitinhId}>{itemUnit.donvitinh.TenDonVi}</option>
+                                                            return <option value={itemUnit.donvitinhId}>{itemUnit.donvitinh.TenDonVi}</option>
                                                         })}
                                                     </select>
                                                 </td>
@@ -211,7 +211,7 @@ function Sale(props) {
                     </div>
                 </div>
             </div>
-            <PrintInvoice invoice={invoice} details={detail} />
+            <PrintInvoice invoice={invoice} details={detail} reset={reset} />
         </Layout>
     );
 }

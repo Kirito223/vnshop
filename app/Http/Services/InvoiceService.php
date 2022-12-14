@@ -92,5 +92,6 @@ class InvoiceService extends BaseService
     public function Delete($id)
     {
         Phieubanhang::destroy($id);
+        return $this->Result("Đã xóa hóa đơn");
     }
 }

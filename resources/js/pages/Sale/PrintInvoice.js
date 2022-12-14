@@ -3,7 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router';
 
 function PrintInvoice(props) {
-    const { invoice, details } = props
+    const { invoice, details, reset } = props
     const { type } = useParams();
     function print() {
         var content = document.getElementById("contentPrint");
@@ -13,6 +13,18 @@ function PrintInvoice(props) {
         pri.document.close();
         pri.focus();
         pri.print();
+    }
+
+    function printDetail() {
+        return details.map(item => {
+            return <tr key={item.id}>
+                <td style={{ border: "1px solid #000" }}>{item.name}</td>
+                <td style={{ border: "1px solid #000" }}>{item.nameUnit}</td>
+                <td style={{ border: "1px solid #000" }}>{new Intl.NumberFormat("vi-Vi").format(item.price)}</td>
+                <td style={{ border: "1px solid #000" }}>{item.quanity}</td>
+                <td style={{ border: "1px solid #000" }}>{new Intl.NumberFormat("vi-Vi").format(item.total)}</td>
+            </tr>
+        })
     }
     return (
         <div id="modal-print" className="modal fade" tabIndex="-1" role="dialog" aria-labelledby="modal-print-title"
@@ -25,28 +37,32 @@ function PrintInvoice(props) {
                     <div className="modal-body">
                         <div id='contentPrint'>
                             <table style={{ width: "100%" }}>
-                                <tr>
-                                    <td style={{ textAlign: "center" }}>
-                                        <p>CỬA HÀNG TỰ CHỌN QUANG TÚC</p>
-                                        <p>Số 02, Thôn Tân Thắng, xã Eana, huyện Krông Ana, tỉnh Đắk Lắk</p>
-                                        <p>Số điện thoại: 0982.377.168-0986.319.066</p>
-                                        <hr />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style={{ textAlign: "center", fontWeight: "bold" }}>
-                                        {(type == 1 || type == 2) ? "HÓA ĐƠN BÁN HÀNG" : "BÁO GIÁ SẢN PHẦM"}
-                                    </td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td style={{ textAlign: "center" }}>
+                                            <p>CỬA HÀNG TỰ CHỌN QUANG TÚC</p>
+                                            <p>Số 02, Thôn Tân Thắng, xã Eana, huyện Krông Ana, tỉnh Đắk Lắk</p>
+                                            <p>Số điện thoại: 0982.377.168-0986.319.066</p>
+                                            <hr />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{ textAlign: "center", fontWeight: "bold" }}>
+                                            {(type == 1 || type == 2) ? "HÓA ĐƠN BÁN HÀNG" : "BÁO GIÁ SẢN PHẦM"}
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                             <table style={{ width: "100%" }}>
-                                <tr>
-                                    <td>Mã Phiếu: {invoice.MaPhieu}</td>
-                                    <td>Ngày: {moment(invoice.NgayLap).format("DD/MM/YYYY")}</td>
-                                </tr>
-                                <tr>
-                                    <td colSpan={2}>Khách hàng:{invoice.TenKhachHang}</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>Mã Phiếu: {invoice.MaPhieu}</td>
+                                        <td>Ngày: {moment(invoice.NgayLap).format("DD/MM/YYYY")}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan={2}>Khách hàng:{invoice.TenKhachHang}</td>
+                                    </tr>
+                                </tbody>
                             </table>
                             <table style={{ border: "1px solid #000", borderCollapse: "collapse", width: "100%" }}>
                                 <thead>
@@ -59,15 +75,7 @@ function PrintInvoice(props) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {details.map(item => {
-                                        return <tr key={item.id}>
-                                            <td style={{ border: "1px solid #000" }}>{item.name}</td>
-                                            <td style={{ border: "1px solid #000" }}>{item.nameUnit}</td>
-                                            <td style={{ border: "1px solid #000" }}>{new Intl.NumberFormat("vi-Vi").format(item.price)}</td>
-                                            <td style={{ border: "1px solid #000" }}>{item.quanity}</td>
-                                            <td style={{ border: "1px solid #000" }}>{new Intl.NumberFormat("vi-Vi").format(item.total)}</td>
-                                        </tr>
-                                    })}
+                                    {printDetail()}
                                     <tr>
                                         <td colSpan={5} style={{ border: "1px solid #000", textAlign: "right", fontWeight: "bold" }}>Tổng tiền: {new Intl.NumberFormat("vi-Vi").format(invoice.TongTien)}</td>
                                     </tr>
@@ -84,6 +92,10 @@ function PrintInvoice(props) {
                     </div>
                     <div className='modal-footer'>
                         <iframe id="ifmcontentstoprint" style={{ height: "0px", width: "0px", position: "absolute" }}></iframe>
+                        <button onClick={() => {
+                            reset()
+                            $('#modal-print').modal('toggle')
+                        }} className='btn btn-sm btn-secondary'>Đóng</button>
                         <button onClick={() => print()} className='btn btn-sm btn-success'>In</button>
                     </div>
                 </div>

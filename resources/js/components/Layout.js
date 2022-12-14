@@ -28,7 +28,7 @@ function Layout(props) {
                                         <ul className="dropdown-menu">
                                             <li><Link className='dropdown-item' to="/sale/1">Bán lẻ</Link></li>
                                             <li><Link className='dropdown-item' to="/sale/2">Bán sỉ</Link></li>
-                                            <li><a className="dropdown-item" href="#">Phiếu báo giá</a></li>
+                                            <li><Link className='dropdown-item' to="/sale/3">Phiếu báo giá</Link></li>
                                         </ul>
                                     </li>
                                     <li className="nav-item dropdown">
