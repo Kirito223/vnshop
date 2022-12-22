@@ -52,7 +52,7 @@ function Layout(props) {
             <div className='row'>
                 {props.children}
             </div>
-            <ToastContainer />
+            <ToastContainer limit={200} />
         </div>
     );
 }
