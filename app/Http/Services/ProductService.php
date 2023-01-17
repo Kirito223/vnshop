@@ -2,10 +2,15 @@
 
 namespace App\Http\Services;
 
+use App\Models\Chitietphieubanhang;
+use App\Models\Phieubanhang;
 use App\Models\Sanpham;
 use App\Models\Sanphamdonvi;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use stdClass;
 
 class ProductService extends BaseService
 {
@@ -41,7 +46,8 @@ class ProductService extends BaseService
                     $unitItem->save();
                 }
                 DB::commit();
-                return $this->Result("Đã lưu sản phẩm");
+                $product = Sanpham::where("id", $product->id)->with('sanphamdonvis')->first();
+                return $this->Result("Đã lưu sản phẩm", true, $product);
             } else {
                 return $this->Result("Sản phẩm đã tồn tại trong hệ thống, không thể thêm các sản phẩm trùng nhau");
             }
@@ -80,5 +86,24 @@ class ProductService extends BaseService
     {
         Sanpham::destroy($id);
         return $this->Result("Đã xóa sản phẩm");
+    }
+
+    public function Report()
+    {
+        $startMonth = Carbon::now()->startOfMonth();
+        $endMonth = Carbon::now()->endOfMonth();
+        $dateRanger = CarbonPeriod::create($startMonth, $endMonth);
+        $result = array();
+        $arrDay = array();
+        foreach ($dateRanger as $day) {
+            $invoice = Phieubanhang::where("NgayLap", $day)->get();
+            $total = 0;
+            foreach ($invoice as $invoiceDetail) {
+                $total += $invoiceDetail->TongTien;
+            }
+            array_push($result, $total);
+            array_push($arrDay, $day->format('d/m/Y'));
+        }
+        return ['data' => $result, 'days' => $arrDay];
     }
 }

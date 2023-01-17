@@ -18,6 +18,7 @@ Route::get("product/list", [ProductController::class, 'List']);
 Route::get("product/delete/{id}", [ProductController::class, 'Delete']);
 Route::get("product/info/{id}", [ProductController::class, 'ProductInfo']);
 Route::post("product/save", [ProductController::class, 'Save']);
+Route::get("product/report", [ProductController::class, 'Report']);
 #endregion
 
 #region Customer

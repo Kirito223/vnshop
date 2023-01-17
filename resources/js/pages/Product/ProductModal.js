@@ -5,7 +5,7 @@ import productApi from '../../apis/productApi';
 import unitApi from '../../apis/unitApi'
 
 function ProductModal(props) {
-    const { refresh, listProduct, productId } = props
+    const { refresh, listProduct, productId = 0, callback } = props
     const [product, setProduct] = useState({ id: 0, MaSanPham: "", TenSanPham: "", NgaySanXuat: moment(new Date()).format('YYYY-MM-DD'), NgayHetHan: moment(new Date()).format('YYYY-MM-DD'), GiaNhap: 0, SoLuongTonKho: 0 })
     const [listUnit, setListUnit] = useState([]);
     const [units, settUnits] = useState([]);
@@ -45,7 +45,6 @@ function ProductModal(props) {
                     settUnits(units)
                 }
                 setProduct(clone)
-
             })
         } else {
             setProduct({ id: 0, MaSanPham: "", TenSanPham: "", NgaySanXuat: moment(new Date()).format('YYYY-MM-DD'), NgayHetHan: moment(new Date()).format('YYYY-MM-DD'), GiaNhap: 0, SoLuongTonKho: 0 })
@@ -64,6 +63,9 @@ function ProductModal(props) {
             if (res.flag) {
                 toast.success(res.msg)
                 refresh();
+                if (callback != undefined) {
+                    callback(res.data)
+                }
                 $('#modal-product').modal('toggle')
             }
         }).catch(err => {

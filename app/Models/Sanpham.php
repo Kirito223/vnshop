@@ -60,4 +60,9 @@ class Sanpham extends Model
 	{
 		return $this->hasMany(Sanphamdonvi::class, 'sanphamId');
 	}
+
+	public function thongke()
+	{
+		return $this->hasMany(Chitietphieubanhang::class, 'sanphamId', 'id');
+	}
 }

@@ -8,6 +8,7 @@ import productApi from '../../apis/productApi'
 import swal from 'sweetalert';
 import PrintInvoice from './PrintInvoice';
 import invoiceApi from '../../apis/invoiceApI';
+import ProductModal from '../Product/ProductModal'
 import { toast } from 'react-toastify';
 function Sale(props) {
     let params = useParams();
@@ -212,6 +213,7 @@ function Sale(props) {
                 </div>
             </div>
             <PrintInvoice invoice={invoice} details={detail} reset={reset} />
+            <ProductModal refresh={loadProduct} callback={selectProdct} />
         </Layout>
     );
 }

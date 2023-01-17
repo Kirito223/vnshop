@@ -5,11 +5,29 @@ import swal from 'sweetalert';
 import productApi from '../../apis/productApi';
 import Layout from '../../components/Layout';
 import Toolbar from '../../components/Toolbar/Toolbar';
+import FilterComponent from './FilterComponent';
 import ProductModal from './ProductModal';
 
 function Product(props) {
+    const [filterText, setFilterText] = React.useState('');
+    const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
+    const subHeaderComponentMemo = React.useMemo(() => {
+        const handleClear = () => {
+            if (filterText) {
+                setResetPaginationToggle(!resetPaginationToggle);
+                setFilterText('');
+            }
+        };
+
+        return (
+            <FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />
+        );
+    }, [filterText, resetPaginationToggle]);
     const [data, setData] = useState([]);
     const [productId, setProductId] = useState(0);
+    const filteredItems = data.filter(
+        item => item.TenSanPham && item.TenSanPham.toLowerCase().includes(filterText.toLowerCase()) || item.MaSanPham && item.MaSanPham.toLowerCase().includes(filterText.toLowerCase()),
+    );
     const menu = [{
         name: "Thêm mới",
         function: function () {
@@ -78,7 +96,7 @@ function Product(props) {
                 <Toolbar menu={menu} />
             </div>
             <div className='col-12'>
-                <DataTable columns={columns} data={data} pagination />
+                <DataTable columns={columns} data={filteredItems} pagination persistTableHead subHeader subHeaderComponent={subHeaderComponentMemo} />
             </div>
             <ProductModal refresh={loadData} listProduct={data} productId={productId} />
         </Layout>

@@ -11,6 +11,9 @@ const productApi = {
     },
     info: async function (id) {
         return axiosClient.get(`product/info/${id}`)
+    },
+    report: async function () {
+        return axiosClient.get(`product/report`)
     }
 }
 

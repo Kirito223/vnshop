@@ -34,4 +34,9 @@ class ProductController extends Controller
     {
         return response()->json($this->service->ProductInfo($id));
     }
+
+    public function Report()
+    {
+        return response()->json($this->service->Report());
+    }
 }

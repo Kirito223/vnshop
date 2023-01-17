@@ -2,6 +2,8 @@
     width: 73.5%;
     position: absolute;
     background-color: white;
+    height: 200px;
+    overflow-y: scroll;
 }
 .listScan>li:hover{
     background-color: azure;
