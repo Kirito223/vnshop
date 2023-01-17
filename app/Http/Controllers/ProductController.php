@@ -25,6 +25,10 @@ class ProductController extends Controller
             return response()->json($this->service->Update($request));
         }
     }
+    public function changePrice(Request $request)
+    {
+        return response()->json($this->service->changePrice($request));
+    }
 
     public function Delete($id)
     {

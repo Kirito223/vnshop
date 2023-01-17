@@ -67,14 +67,33 @@ function Sale(props) {
         clone[check].total = clone[check].quanity * clone[check].price
         clone[check].unit = unitSelect.donvitinh.id
         setDetail(clone)
+        document.getElementById(`price${productId}`).dataset.unit = unit
     }
 
-    function changeValue(key, value, productId) {
+    function changeValue(key, value, productId, unitId, keyCode) {
         let clone = [...detail]
         let check = clone.findIndex(s => s.id == productId)
         clone[check][key] = value;
         clone[check].total = clone[check].quanity * clone[check].price
         setDetail(clone)
+
+    }
+
+    function changePriceProduct(key, value, productId, unitId, keyCode) {
+        if (keyCode == "Enter") {
+            swal({ title: "Bạn có muốn lưu giá sản phẩm đã thay đổi vào hệ thống không?", text: "Lưu thay đổi giá sản phẩm?", buttons: true }).then(isConfirm => {
+                if (isConfirm) {
+                    let data = new FormData();
+                    data.append("productId", productId);
+                    data.append("unitId", unitId);
+                    data.append("price", value);
+                    data.append("type", params.type);
+                    productApi.changePrice(data).then(res => {
+                        toast.success(res.msg)
+                    })
+                }
+            })
+        }
     }
 
     function deleteItemDetail(productId) {
@@ -160,7 +179,7 @@ function Sale(props) {
                                             return <tr key={item.id}>
                                                 <td>{item.name}</td>
                                                 <td>
-                                                    <input onChange={(e) => changeValue("price", e.target.value, item.id)} value={item.price} className="form-control" />
+                                                    <input data-product={item.id} data-unit={item.unit} id={`price${item.id}`} onChange={(e) => changeValue("price", e.target.value, item.id, e.target.dataset.unit, e.key)} value={item.price} onKeyPress={(e) => changePriceProduct("price", e.target.value, item.id, e.target.dataset.unit, e.key)} className="form-control" />
                                                 </td>
                                                 <td>
                                                     <select value={item.unit} onChange={(e) => selectedUnit(e.target.value, item.id)} className='form-control'>

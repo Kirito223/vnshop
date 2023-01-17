@@ -6,6 +6,9 @@ const productApi = {
     save: async function (data) {
         return axiosClient.post("product/save", data)
     },
+    changePrice: async function (data) {
+        return axiosClient.post("product/changePrice", data)
+    },
     destroy: async function (id) {
         return axiosClient.get(`product/delete/${id}`)
     },

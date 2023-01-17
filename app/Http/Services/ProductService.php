@@ -106,4 +106,21 @@ class ProductService extends BaseService
         }
         return ['data' => $result, 'days' => $arrDay];
     }
+
+    public function changePrice(Request $request)
+    {
+        try {
+            $sanpham = Sanphamdonvi::where("sanphamId", $request->productId)
+                ->where("donvitinhId", $request->unitId)->first();
+            if ($request->type == 1) {
+                $sanpham->GiaLe = $request->price;
+            } else if ($request->type == 2) {
+                $sanpham->GiaSi = $request->price;
+            }
+            $sanpham->save();
+            return $this->Result("Đã lưu giá sản phẩm");
+        } catch (\Throwable $th) {
+            return $this->Result("Đã xảy ra lỗi", false);
+        }
+    }
 }
