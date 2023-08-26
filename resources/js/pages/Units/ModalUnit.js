@@ -23,7 +23,11 @@ function ModalUnit(props) {
         if (unit != null) {
             setName(unit.TenDonVi)
             setId(unit.id)
+        } else {
+            setName("");
+            setId(null)
         }
+
     }, [unit])
 
     return (
@@ -52,6 +56,7 @@ function ModalUnit(props) {
                 </div>
             </div>
         </div>
+
     );
 }
 

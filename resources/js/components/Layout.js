@@ -39,7 +39,7 @@ function Layout(props) {
                                             <li><a className="dropdown-item" href="/unit">Đơn vị tính</a></li>
                                             <li><a className="dropdown-item" href="/product">Sản phẩm</a></li>
                                             <li><a className="dropdown-item" href="/customer">Khách hàng</a></li>
-                                            <li><a className="dropdown-item" href="#">Thông tin cửa hàng</a></li>
+                                            {/* <li><a className="dropdown-item" href="#">Thông tin cửa hàng</a></li> */}
                                         </ul>
                                     </li>
                                 </ul>

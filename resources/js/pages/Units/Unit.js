@@ -28,7 +28,7 @@ function Unit(props) {
             name: 'Hành động',
             button: true, cell: (row) => <><button onClick={() => {
                 unitInfo(row)
-            }} className='btn btn btn-sm btn-info'><i className='fa fa-edit'></i></button><button onClick={() => destroy(row.id)} className='btn btn btn-sm btn-danger'><i className='fa fa-trash'></i></button></>,
+            }} className='btn btn btn-sm btn-info mr-1'><i className='fa fa-edit'></i></button><button onClick={() => destroy(row.id)} className='btn btn btn-sm btn-danger'><i className='fa fa-trash'></i></button></>,
         },
     ];
     function destroy(id) {

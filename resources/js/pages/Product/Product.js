@@ -75,7 +75,8 @@ function Product(props) {
             name: 'Dơn vị tính',
             selector: row => {
                 if (row.sanphamdonvis.length > 0) {
-                    return row.sanphamdonvis.find(s => s.Primary == true).donvitinh.TenDonVi
+
+                    return row.sanphamdonvis.find(s => s.Primary == true) != null ? row.sanphamdonvis.find(s => s.Primary == true).donvitinh.TenDonVi : ""
                 } else {
                     return 0
                 }
@@ -85,7 +86,7 @@ function Product(props) {
             name: 'Giá lẻ',
             selector: row => {
                 if (row.sanphamdonvis.length > 0) {
-                    return row.sanphamdonvis.find(s => s.Primary == true).GiaLe
+                    return row.sanphamdonvis.find(s => s.Primary == true) != null ? row.sanphamdonvis.find(s => s.Primary == true).GiaLe : 0
                 } else {
                     return 0
                 }
@@ -96,7 +97,7 @@ function Product(props) {
             name: 'Giá sỉ',
             selector: row => {
                 if (row.sanphamdonvis.length > 0) {
-                    return row.sanphamdonvis.find(s => s.Primary == true).GiaSi
+                    return row.sanphamdonvis.find(s => s.Primary == true) != null ? row.sanphamdonvis.find(s => s.Primary == true).GiaSi : 0
                 } else {
                     return 0
                 }
