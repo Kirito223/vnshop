@@ -73,15 +73,34 @@ function Product(props) {
         },
         {
             name: 'Dơn vị tính',
-            selector: row => row.sanphamdonvis.find(s => s.Primary == true).donvitinh.TenDonVi,
+            selector: row => {
+                if (row.sanphamdonvis.length > 0) {
+                    return row.sanphamdonvis.find(s => s.Primary == true).donvitinh.TenDonVi
+                } else {
+                    return 0
+                }
+            }
         },
         {
             name: 'Giá lẻ',
-            selector: row => row.sanphamdonvis.find(s => s.Primary == true).GiaLe,
+            selector: row => {
+                if (row.sanphamdonvis.length > 0) {
+                    return row.sanphamdonvis.find(s => s.Primary == true).GiaLe
+                } else {
+                    return 0
+                }
+
+            }
         },
         {
             name: 'Giá sỉ',
-            selector: row => row.sanphamdonvis.find(s => s.Primary == true).GiaSi,
+            selector: row => {
+                if (row.sanphamdonvis.length > 0) {
+                    return row.sanphamdonvis.find(s => s.Primary == true).GiaSi
+                } else {
+                    return 0
+                }
+            },
         },
         {
             name: "Thao tác",
