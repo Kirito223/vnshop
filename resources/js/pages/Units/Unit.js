@@ -17,6 +17,16 @@ function Unit(props) {
             setUnit(null)
             $('#modal-unit').modal('show')
         }
+    }, {
+        name: "Xuất Excel",
+        function: function () {
+
+        }
+    }, {
+        name: "Nhập excel",
+        function: function () {
+
+        }
     }]
 
     const columns = [

@@ -37,7 +37,9 @@ function ModalUnit(props) {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="modal-unit-title">Thông tin đơn vị</h5>
-                        <button className="close" data-dismiss="modal" aria-label="Close">
+                        <button onClick={() => {
+                            $('#modal-unit').modal("toggle")
+                        }} className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
