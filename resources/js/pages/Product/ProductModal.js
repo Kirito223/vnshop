@@ -120,29 +120,29 @@ function ProductModal(props) {
                                 <div className='col-6'>
                                     <div className='form-group'>
                                         <label>Mã sản phẩm</label>
-                                        <input type="text" onInput={(e) => changeValue("MaSanPham", e.target.value)} value={product.MaSanPham} className='form-control' />
+                                        <input id='barcode' type="text" onInput={(e) => changeValue("MaSanPham", e.target.value)} value={product.MaSanPham} className='form-control' />
                                     </div>
                                     <div className='form-group'>
                                         <label>Ngày sản xuất</label>
-                                        <input type="date" onChange={(e) => changeValue("NgaySanXuat", e.target.value)} value={product.NgaySanXuat} className='form-control' />
+                                        <input id='dateofmanufacture' type="date" onChange={(e) => changeValue("NgaySanXuat", e.target.value)} value={product.NgaySanXuat} className='form-control' />
                                     </div>
                                     <div className='form-group'>
                                         <label>Giá nhập</label>
-                                        <input onInput={(e) => changeValue("GiaNhap", e.target.value)} value={product.GiaNhap} type="number" className='form-control' />
+                                        <input id='priceinput' onInput={(e) => changeValue("GiaNhap", e.target.value)} value={product.GiaNhap} type="number" className='form-control' />
                                     </div>
                                 </div>
                                 <div className='col-6'>
                                     <div className='form-group'>
                                         <label>Tên sản phẩm</label>
-                                        <input type="text" onInput={(e) => changeValue("TenSanPham", e.target.value)} value={product.TenSanPham} className='form-control' />
+                                        <input id='productname' type="text" onInput={(e) => changeValue("TenSanPham", e.target.value)} value={product.TenSanPham} className='form-control' />
                                     </div>
                                     <div className='form-group'>
                                         <label>Ngày hết hạn</label>
-                                        <input type="date" onChange={(e) => changeValue("NgayHetHan", e.target.value)} value={product.NgayHetHan} className='form-control' />
+                                        <input id='dateexp' type="date" onChange={(e) => changeValue("NgayHetHan", e.target.value)} value={product.NgayHetHan} className='form-control' />
                                     </div>
                                     <div className='form-group'>
                                         <label>Số lượng tồn kho</label>
-                                        <input onInput={(e) => changeValue("SoLuongTonKho", e.target.value)} type="number" value={product.SoLuongTonKho} className='form-control' />
+                                        <input id='number' onInput={(e) => changeValue("SoLuongTonKho", e.target.value)} type="number" value={product.SoLuongTonKho} className='form-control' />
                                     </div>
                                 </div>
                                 <div className='col-12 mt-1'>
@@ -161,7 +161,7 @@ function ProductModal(props) {
                                                 units.map(item => {
                                                     return <tr key={item.id}>
                                                         <td>
-                                                            <select value={item.unit} onChange={(e) => changeValueUnit("unit", e.target.value, item.id)} className='form-control'>
+                                                            <select data-id={item.id} value={item.unit} onChange={(e) => changeValueUnit("unit", e.target.value, item.id)} className='form-control'>
                                                                 <option value="">Chọn đơn vị tính</option>
                                                                 {listUnit.map(itemUnit => {
                                                                     return <option value={itemUnit.id}>{itemUnit.TenDonVi}</option>
@@ -169,15 +169,15 @@ function ProductModal(props) {
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input value={item.retail} onChange={(e) => changeValueUnit("retail", e.target.value, item.id)} className='form-control' />
+                                                            <input data-id={item.id} value={item.retail} onChange={(e) => changeValueUnit("retail", e.target.value, item.id)} className='form-control' />
                                                         </td>
                                                         <td>
-                                                            <input value={item.whole} onChange={(e) => changeValueUnit("whole", e.target.value, item.id)} className='form-control' />
+                                                            <input data-id={item.id} value={item.whole} onChange={(e) => changeValueUnit("whole", e.target.value, item.id)} className='form-control' />
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" checked={item.primary} onChange={(e) => changeValueUnit("primary", e.target.checked, item.id)} />
+                                                            <input data-id={item.id} type="checkbox" checked={item.primary} onChange={(e) => changeValueUnit("primary", e.target.checked, item.id)} />
                                                         </td>
-                                                        <td style={{ textAlign: "center" }}>
+                                                        <td data-id={item.id} style={{ textAlign: "center" }}>
                                                             <i onClick={() => deleteRow(item.id)} style={{ cursor: "pointer", color: "red" }} className='fa fa-trash'></i>
                                                         </td>
                                                     </tr>

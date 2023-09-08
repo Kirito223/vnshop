@@ -17,17 +17,20 @@ function Unit(props) {
             setUnit(null)
             $('#modal-unit').modal('show')
         }
-    }, {
-        name: "Xuất Excel",
-        function: function () {
+    },
+        //  {
+        //     name: "Xuất Excel",
+        //     function: function () {
 
-        }
-    }, {
-        name: "Nhập excel",
-        function: function () {
+        //     }
+        // },
+        //  {
+        //     name: "Nhập excel",
+        //     function: function () {
 
-        }
-    }]
+        //     }
+        // }
+    ]
 
     const columns = [
         {
@@ -36,9 +39,9 @@ function Unit(props) {
         },
         {
             name: 'Hành động',
-            button: true, cell: (row) => <><button onClick={() => {
+            button: true, cell: (row) => <><button data-id={row.TenDonVi} onClick={() => {
                 unitInfo(row)
-            }} className='btn btn btn-sm btn-info mr-1'><i className='fa fa-edit'></i></button><button onClick={() => destroy(row.id)} className='btn btn btn-sm btn-danger'><i className='fa fa-trash'></i></button></>,
+            }} className='btn btn btn-sm btn-info mr-1 btn-edit'><i className='fa fa-edit'></i></button><button data-id={row.TenDonVi} onClick={() => destroy(row.id)} className='btn btn btn-sm btn-danger btn-del'><i className='fa fa-trash'></i></button></>,
         },
     ];
     function destroy(id) {

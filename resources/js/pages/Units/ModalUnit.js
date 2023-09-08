@@ -46,14 +46,14 @@ function ModalUnit(props) {
                     <div className="modal-body">
                         <div className='form-group'>
                             <label>Tên đơn vị</label>
-                            <input value={Name} onInput={(e) => {
+                            <input id="unitName" value={Name} onInput={(e) => {
                                 setName(e.target.value)
                             }} className='form-control' type="text" />
                         </div>
                     </div>
                     <div className="modal-footer">
                         <button className='btn btn-sm btn-secondary' data-bs-dismiss="modal">Đóng</button>
-                        <button onClick={() => handleSubmit()} className='btn btn-sm btn-primary'>Lưu</button>
+                        <button id='saveUnit' onClick={() => handleSubmit()} className='btn btn-sm btn-primary'>Lưu</button>
                     </div>
                 </div>
             </div>
